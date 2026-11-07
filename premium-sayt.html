@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Telegram Premium va Stars 24/7</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0A0C1F; --ink:#F2F4FF; --muted:#A3A9D6; --card:rgba(255,255,255,.06); --line:rgba(255,255,255,.14);
+  --blue:#2AABEE; --violet:#8B5CF6; --pink:#FF4FA3; --gold:#FFC83D; --green:#34E0A1;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A0C1F;--ink:#F2F4FF;--muted:#A3A9D6}}
+:root[data-theme="dark"]{--bg:#0A0C1F;--ink:#F2F4FF;--muted:#A3A9D6}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Manrope,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:Sora,Manrope,system-ui,sans-serif;line-height:1.12;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* animatsiyali fon */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:radial-gradient(120% 80% at 50% 0%,#17194a 0%,var(--bg) 60%)}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:drift 18s ease-in-out infinite alternate}
+.b1{width:46vmax;height:46vmax;background:var(--violet);left:-12vmax;top:-10vmax}
+.b2{width:38vmax;height:38vmax;background:var(--blue);right:-12vmax;top:18vh;animation-duration:22s}
+.b3{width:34vmax;height:34vmax;background:var(--pink);left:20vw;bottom:-18vmax;animation-duration:26s;opacity:.4}
+@keyframes drift{to{transform:translate(8vmax,6vmax) scale(1.18)}}
+.star{position:absolute;color:var(--gold);animation:tw var(--d,4s) ease-in-out infinite alternate,rise var(--r,30s) linear infinite}
+@keyframes tw{from{opacity:.15;transform:scale(.6) rotate(0)}to{opacity:.95;transform:scale(1.1) rotate(25deg)}}
+@keyframes rise{from{margin-top:0}to{margin-top:-30vh}}
+
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font:800 1.1rem Sora,sans-serif;text-decoration:none;display:flex;gap:8px;align-items:center}
+.logo b{display:grid;place-items:center;width:34px;height:34px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--violet))}
+nav{display:flex;gap:18px;font-weight:700;font-size:.95rem}
+nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--ink)}
+
+.hero{padding:56px 0 40px;text-align:center}
+.pill{display:inline-block;padding:7px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);backdrop-filter:blur(10px);color:var(--muted);font-weight:700;font-size:.9rem}
+.hero h1{font-size:clamp(2.2rem,8vw,4.6rem);font-weight:800;letter-spacing:-.03em;margin:22px auto 18px;max-width:14ch;
+  background:linear-gradient(100deg,#fff 20%,var(--blue) 55%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:32em;margin:0 auto 30px;font-size:1.1rem}
+.btn{display:inline-block;padding:15px 28px;border-radius:16px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px)}
+.btn.go{background:linear-gradient(135deg,var(--blue),var(--violet));color:#fff;box-shadow:0 10px 30px rgba(42,171,238,.35)}
+.btn.ghost{background:var(--card);border:1px solid var(--line);color:var(--ink);margin-left:8px}
+
+section{padding:46px 0}
+h2{font-size:clamp(1.5rem,4.5vw,2.1rem);font-weight:700;margin-bottom:8px}
+.sub{color:var(--muted);margin:0 0 26px}
+.glass{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:26px;backdrop-filter:blur(14px)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.glass h3{font-size:1.15rem;margin-bottom:4px}
+.tag{display:inline-block;font-size:.82rem;font-weight:700;color:var(--green);margin-bottom:14px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-top:1px solid var(--line)}
+.row span{color:var(--muted)}
+.row strong{font:700 1.1rem Sora,sans-serif;white-space:nowrap}
+.row a{padding:8px 16px;border-radius:12px;background:rgba(42,171,238,.18);color:var(--blue);font-weight:700;text-decoration:none;font-size:.9rem;white-space:nowrap}
+.row a:hover{background:var(--blue);color:#06142a}
+.row .l{flex:1}
+
+/* stars */
+.stars{position:relative;border-radius:30px;padding:2px;background:linear-gradient(120deg,var(--gold),var(--pink),var(--violet),var(--blue),var(--gold));background-size:300% 300%;animation:shine 7s linear infinite}
+@keyframes shine{to{background-position:300% 0}}
+.stars>div{background:#10123A;border-radius:28px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.price{font:800 2.6rem Sora,sans-serif;color:var(--gold);margin:10px 0 4px}
+.price small{font-size:1rem;color:var(--muted);font-weight:500}
+.info{list-style:none;padding:0;margin:14px 0 0;color:var(--muted)}
+.info li{padding:4px 0}
+.calc label{display:block;font-weight:700;font-size:.92rem;margin:0 0 6px;color:var(--muted)}
+.calc input{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.07);color:var(--ink);font:700 1.2rem Sora,sans-serif;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chips button{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:700 .9rem Manrope,sans-serif;cursor:pointer}
+.chips button:hover{border-color:var(--gold)}
+.total{padding:16px;border-radius:16px;background:rgba(255,200,61,.1);margin-bottom:14px}
+.total div{color:var(--muted);font-size:.9rem}
+.total b{font:800 1.7rem Sora,sans-serif;color:var(--gold)}
+.warn{color:var(--pink);font-size:.9rem;min-height:1.4em;margin:-6px 0 8px}
+.calc .btn{width:100%;text-align:center;background:linear-gradient(135deg,var(--gold),#ff9a3d);color:#2a1700}
+
+/* xizmatlar */
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.svc a{text-decoration:none;padding:22px 18px;border-radius:22px;background:var(--card);border:1px solid var(--line);transition:transform .25s,border-color .25s;backdrop-filter:blur(10px)}
+.svc a:hover{transform:translateY(-5px);border-color:var(--c)}
+.svc i{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;font-style:normal;font-size:1.4rem;margin-bottom:14px;background:color-mix(in srgb,var(--c) 22%,transparent)}
+.svc h3{font-size:1rem;margin-bottom:4px}
+.svc p{margin:0;color:var(--muted);font-size:.88rem}
+
+.cta{text-align:center;padding:44px 24px;border-radius:32px;background:linear-gradient(135deg,rgba(42,171,238,.25),rgba(139,92,246,.25));border:1px solid var(--line)}
+.cta h2{margin-bottom:10px}.cta p{color:var(--muted);margin:0 0 24px}
+footer{text-align:center;color:var(--muted);font-size:.9rem;padding:34px 0}
+
+/* kuchli animatsiyalar */
+.hero>*{animation:in .9s cubic-bezier(.2,.9,.3,1.2) 2.3s both}
+.hero>:nth-child(2){animation-delay:2.4s}.hero>:nth-child(4){animation-delay:2.65s}.hero>:nth-child(5){animation-delay:2.8s}
+.hero h1{background-size:260% 100%;animation:in .9s cubic-bezier(.2,.9,.3,1.2) 2.45s both,hue 5s ease-in-out infinite alternate}
+@keyframes in{from{opacity:0;transform:translateY(44px) scale(.9)}}
+@keyframes hue{to{background-position:100% 0}}
+.orb{position:relative;width:110px;height:110px;margin:0 auto 14px;display:grid;place-items:center;font-size:76px}
+.orb span{display:inline-block;animation:spin 5s linear infinite;filter:drop-shadow(0 0 26px var(--gold))}
+.orb::before,.orb::after{content:"";position:absolute;inset:8px;border-radius:50%;border:2px solid var(--gold);opacity:0;animation:ring 3s ease-out infinite}
+.orb::after{animation-delay:1.5s}
+@keyframes ring{from{transform:scale(.6);opacity:.8}to{transform:scale(2.4);opacity:0}}
+@keyframes spin{to{transform:rotateY(360deg)}}
+.btn.go{position:relative;overflow:hidden;animation:pulse 2.4s ease-in-out infinite}
+.btn.go::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:sweep 3s ease-in-out infinite}
+@keyframes sweep{to{left:140%}}
+@keyframes pulse{50%{box-shadow:0 10px 50px rgba(139,92,246,.75)}}
+.mq{overflow:hidden;border-block:1px solid var(--line);background:rgba(255,255,255,.05);padding:14px 0;margin:6px -20px 0;transform:rotate(-1.5deg)}
+.mq div{display:flex;gap:44px;width:max-content;animation:mq 24s linear infinite;font:700 1.05rem Sora,sans-serif;color:var(--muted);white-space:nowrap}
+.mq span:nth-child(3n+1){color:var(--gold)}.mq span:nth-child(3n+2){color:var(--blue)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.js .rv{opacity:0;transform:translateY(60px) scale(.96);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.9,.3,1.1)}
+.js .rv.on{opacity:1;transform:none}
+.glass{transition:transform .15s ease-out,border-color .3s;transform:perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+.glass:hover{border-color:rgba(255,255,255,.35)}
+.svc a:hover{transform:translateY(-8px) rotate(-1.5deg) scale(1.03);box-shadow:0 18px 40px color-mix(in srgb,var(--c) 35%,transparent)}
+.svc i{animation:bob 3s ease-in-out infinite alternate}
+.svc a:nth-child(2) i{animation-delay:.5s}.svc a:nth-child(3) i{animation-delay:1s}.svc a:nth-child(4) i{animation-delay:1.5s}
+@keyframes bob{to{transform:translateY(-7px) rotate(7deg)}}
+.total b{display:inline-block}.total b.pop{animation:pop .35s ease}
+@keyframes pop{40%{transform:scale(1.25)}}
+.glow{position:absolute;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.4),transparent 65%);left:50%;top:30%;transform:translate(-50%,-50%);pointer-events:none;transition:left .3s ease-out,top .3s ease-out}
+.shoot{position:absolute;width:150px;height:2px;background:linear-gradient(90deg,#fff,transparent);opacity:0;animation:shoot 6s ease-in infinite}
+@keyframes shoot{0%{opacity:0;transform:translate(0,0) rotate(-35deg)}4%{opacity:1}28%{opacity:0;transform:translate(-65vw,45vh) rotate(-35deg)}100%{opacity:0}}
+/* kirish animatsiyasi */
+.bg{animation:bgin 3.4s ease-out both}
+@keyframes bgin{from{transform:scale(1.4);opacity:.25}to{transform:none;opacity:1}}
+.intro{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 50%,#1d1b66 0,#05061a 70%);overflow:hidden;animation:outro .8s cubic-bezier(.7,0,.3,1) 2.6s forwards}
+@keyframes outro{to{opacity:0;transform:scale(1.8);visibility:hidden}}
+.intro>*{position:absolute;left:50%;top:50%;translate:-50% -50%}
+.rays{width:160vmax;height:160vmax;border-radius:50%;background:repeating-conic-gradient(rgba(139,92,246,.4) 0 6deg,transparent 6deg 18deg);-webkit-mask:radial-gradient(circle,#000,transparent 55%);mask:radial-gradient(circle,#000,transparent 55%);animation:rot 6s linear infinite,fadein 1s both}
+@keyframes rot{to{transform:rotate(360deg)}}
+@keyframes fadein{from{opacity:0}}
+.mark{width:min(46vmin,220px);aspect-ratio:1;animation:logo 1.4s cubic-bezier(.2,1.5,.4,1) .2s both;filter:drop-shadow(0 0 36px rgba(139,92,246,.95)) drop-shadow(0 0 80px rgba(42,171,238,.7))}
+.mark svg{width:100%;height:100%;animation:beat .9s ease-in-out 1.6s infinite alternate}
+@keyframes logo{from{transform:scale(0) rotate(-540deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes beat{to{transform:scale(1.1)}}
+.ring{width:200px;height:200px;border-radius:50%;border:3px solid var(--gold);opacity:0;animation:shock 1.6s ease-out both}
+.r1{animation-delay:.9s}.r2{animation-delay:1.1s;border-color:var(--blue)}.r3{animation-delay:1.3s;border-color:var(--pink)}
+@keyframes shock{from{transform:scale(.3);opacity:1}to{transform:scale(9);opacity:0}}
+.word{top:calc(50% + min(34vmin,190px));white-space:nowrap;font:800 clamp(1.4rem,6vw,2.4rem) Sora,sans-serif;background:linear-gradient(100deg,#fff,var(--blue),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;animation:in .8s 1.2s both}
+.burst{width:0;height:0}
+.burst i{position:absolute;left:0;top:0;width:var(--w);height:var(--w);margin:calc(var(--w)/-2) 0 0 calc(var(--w)/-2);background:var(--c);border-radius:50%;opacity:0;animation:fly 1.5s cubic-bezier(.1,.7,.3,1) var(--dl) both}
+@keyframes fly{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(.2)}}
+.intro::after{content:"";position:absolute;inset:0;background:#fff;opacity:0;animation:flash .7s ease-out .85s both}
+@keyframes flash{0%{opacity:.9}100%{opacity:0}}
+.r4{animation-delay:1.5s;border-color:var(--violet)}
+.skip .hero>*{animation-delay:0s!important}
+@media (prefers-reduced-motion:reduce){.intro{display:none}}
+@media (max-width:760px){
+  nav{display:none}
+  .two,.stars>div{grid-template-columns:1fr}
+  .stars>div{padding:22px}
+  .svc{grid-template-columns:1fr 1fr}
+  .btn.ghost{margin:10px 0 0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* shaxsiy fonlar */
+section{position:relative;isolation:isolate}
+section::before,#stars::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);pointer-events:none}
+section::before{-webkit-mask:linear-gradient(transparent,#000 16%,#000 84%,transparent);mask:linear-gradient(transparent,#000 16%,#000 84%,transparent);animation:breath 9s ease-in-out infinite alternate}
+@keyframes breath{to{filter:hue-rotate(35deg) brightness(1.25)}}
+#premium::before{background:radial-gradient(520px 320px at 10% 30%,rgba(139,92,246,.38),transparent 70%),radial-gradient(480px 300px at 92% 80%,rgba(42,171,238,.3),transparent 70%),radial-gradient(rgba(255,255,255,.16) 1px,transparent 1.6px) 0 0/26px 26px}
+#stars::before{background:radial-gradient(620px 360px at 50% 50%,rgba(255,200,61,.3),transparent 70%),radial-gradient(420px 260px at 8% 20%,rgba(255,79,163,.28),transparent 70%),radial-gradient(420px 260px at 92% 85%,rgba(139,92,246,.34),transparent 70%)}
+#stars::after{background:radial-gradient(circle,rgba(255,200,61,.95) 1px,transparent 2.2px) 0 0/90px 90px,radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 2px) 45px 45px/90px 90px;-webkit-mask:linear-gradient(transparent,#000 20%,#000 80%,transparent);mask:linear-gradient(transparent,#000 20%,#000 80%,transparent);animation:twink 3.5s ease-in-out infinite alternate}
+@keyframes twink{from{opacity:.15}to{opacity:.7}}
+#xizmat::before{background:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px) 0 0/44px 44px,radial-gradient(500px 300px at 88% 18%,rgba(52,224,161,.3),transparent 70%),radial-gradient(500px 300px at 8% 92%,rgba(42,171,238,.3),transparent 70%);background-position:0 0,0 0,0 0,0 0;animation:breath 9s ease-in-out infinite alternate,grid 12s linear infinite}
+@keyframes grid{to{background-position:44px 44px,44px 44px,0 0,0 0}}
+#aloqa::before{background:radial-gradient(600px 340px at 50% 60%,rgba(255,79,163,.34),transparent 70%),radial-gradient(500px 300px at 12% 20%,rgba(139,92,246,.34),transparent 70%),radial-gradient(500px 300px at 90% 25%,rgba(42,171,238,.28),transparent 70%)}
+h2{display:flex;align-items:center;gap:12px}
+h2::before{content:"";width:6px;height:1.05em;border-radius:6px;background:linear-gradient(var(--blue),var(--pink))}
+.cta h2{justify-content:center}.cta h2::before{display:none}
+.glass{background:linear-gradient(160deg,rgba(255,255,255,.11),rgba(255,255,255,.04))}
+.me{display:flex;align-items:center;gap:12px;width:max-content;max-width:100%;margin:28px auto 0;padding:10px 18px 10px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(12px);text-align:left}
+.me .av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:800 .95rem Sora,sans-serif;background:linear-gradient(135deg,var(--blue),var(--pink));color:#fff;flex:none}
+.me b{display:block;font-size:1rem;line-height:1.2}.me small{color:var(--muted);font-size:.82rem}
+.me .dot{width:10px;height:10px;border-radius:50%;background:var(--green);flex:none;animation:ping 1.8s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(52,224,161,.7)}70%,100%{box-shadow:0 0 0 12px rgba(52,224,161,0)}}
+/* xizmat kartalari va qadamlar */
+.svc a{position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:230px;background:linear-gradient(160deg,color-mix(in srgb,var(--c) 22%,rgba(255,255,255,.06)),rgba(255,255,255,.04));border-color:color-mix(in srgb,var(--c) 45%,transparent)}
+.svc a::after{content:"";position:absolute;width:150px;height:150px;right:-45px;top:-45px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--c) 55%,transparent),transparent 70%);transition:transform .4s;pointer-events:none}
+.svc a:hover::after{transform:scale(1.6)}
+.svc i{position:relative;z-index:1;width:58px;height:58px;border-radius:19px;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 35%,#8B5CF6));box-shadow:0 10px 26px color-mix(in srgb,var(--c) 50%,transparent)}
+.svc i svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{font-size:1.15rem}
+.svc p{flex:1}
+.svc .go{margin-top:16px;font-weight:700;font-size:.92rem;color:var(--c);display:flex;gap:6px;align-items:center}
+.svc .go b{transition:transform .25s}.svc a:hover .go b{transform:translateX(5px)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+.step{padding:26px 22px;border-radius:24px;background:linear-gradient(160deg,rgba(255,255,255,.11),rgba(255,255,255,.04));border:1px solid var(--line);backdrop-filter:blur(12px)}
+.step .n{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;font:800 1.1rem Sora,sans-serif;color:#fff;background:linear-gradient(135deg,var(--blue),var(--pink));margin-bottom:14px}
+.step h3{font-size:1.05rem;margin-bottom:6px}.step p{margin:0;color:var(--muted);font-size:.93rem}
+.cta2{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px}
+.cta2 .me{margin:0}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2AABEE"/><stop offset=".5" stop-color="#8B5CF6"/><stop offset="1" stop-color="#FF4FA3"/></linearGradient><symbol id="star" viewBox="0 0 24 24"><path d="M12 2.2l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.1l-6 3.5 1.3-6.7-5-4.7 6.8-.8z" stroke-linejoin="round" stroke="currentColor" stroke-width="1.4"/></symbol></defs></svg>
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="rays"></div><div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="ring r4"></div><div class="burst" id="burst"></div>
+  <div class="mark"><svg viewBox="0 0 24 24" style="color:#fff"><use href="#star" fill="url(#pg)"/></svg></div>
+  <div class="word">Telegram Premium</div>
+</div>
+<div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div id="sky"></div><div class="glow" id="glow"></div></div>
+
+<div class="wrap">
+<header>
+  <a class="logo" href="#top"><b><svg viewBox="0 0 24 24" width="20" height="20" style="color:#fff"><use href="#star" fill="#fff"/></svg></b>Premium 24/7</a>
+  <nav><a href="#premium">Premium</a><a href="#stars">Stars</a><a href="#xizmat">Xizmatlar</a><a href="#aloqa">Aloqa</a></nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="orb" aria-hidden="true"><span><svg viewBox="0 0 24 24" width="84" height="84" style="color:#fff"><use href="#star" fill="url(#pg)"/></svg></span></div>
+    <span class="pill">Premium olib berish xizmati 24/7</span>
+    <h1>Telegram Premium va Stars arzon narxda</h1>
+    <p>Akkauntga kirib yoki kirmasdan beriladi. Narxlar aniq, to‘lovdan keyin tez yetkaziladi.</p>
+    <a class="btn go" href="#premium">Narxlarni ko‘rish</a><a class="btn ghost" href="https://t.me/sabr_t1k" target="_blank" rel="noopener">@sabr_t1k</a>
+    <div class="me"><span class="av">ST</span><span><b>@sabr_t1k</b><small>Shaxsiy menejeringiz · 24/7 onlayn</small></span><i class="dot"></i></div>
+  </div>
+
+  <div class="mq" aria-hidden="true"><div>
+    <span>⭐ Stars 215 so‘m</span><span>Premium 45 000 so‘m dan</span><span>🚀 Nakrutka</span><span>🎁 NFT</span><span>📣 Spam</span><span>📱 Nomer</span><span>24/7 @sabr_t1k</span>
+    <span>⭐ Stars 215 so‘m</span><span>Premium 45 000 so‘m dan</span><span>🚀 Nakrutka</span><span>🎁 NFT</span><span>📣 Spam</span><span>📱 Nomer</span><span>24/7 @sabr_t1k</span>
+  </div></div>
+
+  <section id="premium">
+    <h2>Telegram Premium narxlari</h2>
+    <p class="sub">O‘zingizga qulay usulni tanlang.</p>
+    <div class="two">
+      <div class="glass">
+        <h3>Akkauntga kirib beriladi</h3><span class="tag">✔ Tasdiqlangan usul</span>
+        <div class="row"><span class="l">1 oylik</span><strong>45 000 so‘m</strong><a href="https://t.me/sabr_t1k?text=Assalomu%20alaykum%21%20%F0%9F%91%8B%0A%0A%E2%AD%90%20Xizmat%3A%20Telegram%20Premium%0A%F0%9F%93%85%20Muddat%3A%201%20oylik%0A%F0%9F%94%91%20Usul%3A%20akkauntga%20kirib%20beriladi%0A%F0%9F%92%B0%20Narxi%3A%2045%20000%20so%E2%80%98m%0A%0A%F0%9F%92%B3%20To%E2%80%98lovni%20karta%20orqali%20qilaman.%20Karta%20raqamini%20yuboring%2C%20rahmat%21" target="_blank" rel="noopener">Olish</a></div>
+        <div class="row"><span class="l">1 yillik</span><strong>274 999 so‘m</strong><a href="https://t.me/sabr_t1k?text=Assalomu%20alaykum%21%20%F0%9F%91%8B%0A%0A%E2%AD%90%20Xizmat%3A%20Telegram%20Premium%0A%F0%9F%93%85%20Muddat%3A%201%20yillik%0A%F0%9F%94%91%20Usul%3A%20akkauntga%20kirib%20beriladi%0A%F0%9F%92%B0%20Narxi%3A%20274%20999%20so%E2%80%98m%0A%0A%F0%9F%92%B3%20To%E2%80%98lovni%20karta%20orqali%20qilaman.%20Karta%20raqamini%20yuboring%2C%20rahmat%21" target="_blank" rel="noopener">Olish</a></div>
+      </div>
+      <div class="glass">
+        <h3>Akkauntga kirmasdan beriladi</h3><span class="tag">✔ Parol kerak emas</span>
+        <div class="row"><span class="l">3 oylik</span><strong>169 999 so‘m</strong><a href="https://t.me/sabr_t1k?text=Assalomu%20alaykum%21%20%F0%9F%91%8B%0A%0A%E2%AD%90%20Xizmat%3A%20Telegram%20Premium%0A%F0%9F%93%85%20Muddat%3A%203%20oylik%0A%F0%9F%94%91%20Usul%3A%20akkauntga%20kirmasdan%20beriladi%0A%F0%9F%92%B0%20Narxi%3A%20169%20999%20so%E2%80%98m%0A%0A%F0%9F%92%B3%20To%E2%80%98lovni%20karta%20orqali%20qilaman.%20Karta%20raqamini%20yuboring%2C%20rahmat%21" target="_blank" rel="noopener">Olish</a></div>
+        <div class="row"><span class="l">6 oylik</span><strong>229 999 so‘m</strong><a href="https://t.me/sabr_t1k?text=Assalomu%20alaykum%21%20%F0%9F%91%8B%0A%0A%E2%AD%90%20Xizmat%3A%20Telegram%20Premium%0A%F0%9F%93%85%20Muddat%3A%206%20oylik%0A%F0%9F%94%91%20Usul%3A%20akkauntga%20kirmasdan%20beriladi%0A%F0%9F%92%B0%20Narxi%3A%20229%20999%20so%E2%80%98m%0A%0A%F0%9F%92%B3%20To%E2%80%98lovni%20karta%20orqali%20qilaman.%20Karta%20raqamini%20yuboring%2C%20rahmat%21" target="_blank" rel="noopener">Olish</a></div>
+        <div class="row"><span class="l">12 oylik</span><strong>399 999 so‘m</strong><a href="https://t.me/sabr_t1k?text=Assalomu%20alaykum%21%20%F0%9F%91%8B%0A%0A%E2%AD%90%20Xizmat%3A%20Telegram%20Premium%0A%F0%9F%93%85%20Muddat%3A%2012%20oylik%0A%F0%9F%94%91%20Usul%3A%20akkauntga%20kirmasdan%20beriladi%0A%F0%9F%92%B0%20Narxi%3A%20399%20999%20so%E2%80%98m%0A%0A%F0%9F%92%B3%20To%E2%80%98lovni%20karta%20orqali%20qilaman.%20Karta%20raqamini%20yuboring%2C%20rahmat%21" target="_blank" rel="noopener">Olish</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stars">
+    <h2>Telegram Stars</h2>
+    <p class="sub">Kerakli miqdorni kiriting, summa o‘zi hisoblanadi.</p>
+    <div class="stars"><div>
+      <div>
+        <span class="tag" style="color:var(--gold)">⭐ Stars narxi</span>
+        <div class="price">215 so‘m <small>/ 1 ta</small></div>
+        <ul class="info">
+          <li>Minimal: 50 ta</li>
+          <li>Maksimal: cheksiz</li>
+          <li>Hisobingizga tez tushiriladi</li>
+        </ul>
+      </div>
+      <div class="calc">
+        <label for="st">Stars soni</label>
+        <input id="st" inputmode="numeric" autocomplete="off" value="50">
+        <div class="chips" id="chips"></div>
+        <label for="sm">Yoki summa (so‘m)</label>
+        <input id="sm" inputmode="numeric" autocomplete="off">
+        <div class="warn" id="warn"></div>
+        <div class="total"><div>To‘lov summasi</div><b id="tot">0 so‘m</b></div>
+        <a class="btn" id="buy" href="https://t.me/sabr_t1k" target="_blank" rel="noopener">Stars olish</a>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="xizmat">
+    <h2>Boshqa xizmatlar</h2>
+    <p class="sub">Xizmatni tanlang, tayyor xabar @sabr_t1k ga ochiladi.</p>
+    <div class="svc">
+      <a href="https://t.me/sabr_t1k?text=Assalomu%20alaykum%21%20%F0%9F%91%8B%0A%0A%F0%9F%9A%80%20Xizmat%3A%20Nakrutka%20%28obunachi%2C%20ko%E2%80%98rishlar%2C%20reaksiyalar%29%0A%0A%F0%9F%93%9D%20Qaysi%20kanal%20yoki%20guruh%20va%20qancha%20miqdor%20kerakligini%20keyingi%20xabarda%20yozaman.%0A%0A%F0%9F%92%B0%20Narxi%20va%20%F0%9F%92%B3%20karta%20orqali%20to%E2%80%98lov%20tafsilotlarini%20yuboring%2C%20rahmat%21" target="_blank" rel="noopener" style="--c:var(--blue)"><i><svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></i><h3>Nakrutka</h3><p>Obunachi, ko‘rishlar va reaksiyalar</p><span class="go">Buyurtma berish <b>→</b></span></a>
+      <a href="https://t.me/sabr_t1k?text=Assalomu%20alaykum%21%20%F0%9F%91%8B%0A%0A%F0%9F%9B%A1%20Xizmat%3A%20Spam%20holatidan%20ozod%20qilish%0A%0A%F0%9F%93%A9%20Akkauntim%20spam%20bo%E2%80%98lib%20qoldi%2C%20ozod%20qilib%20berishingiz%20kerak.%0A%0A%F0%9F%92%B0%20Narxi%20va%20%F0%9F%92%B3%20karta%20orqali%20to%E2%80%98lov%20tafsilotlarini%20yuboring%2C%20rahmat%21" target="_blank" rel="noopener" style="--c:var(--pink)"><i><svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></i><h3>Spam</h3><p>Spam bo‘lsangiz ozod qilib beramiz</p><span class="go">Buyurtma berish <b>→</b></span></a>
+      <a href="https://t.me/sabr_t1k?text=Assalomu%20alaykum%21%20%F0%9F%91%8B%0A%0A%F0%9F%8E%81%20Xizmat%3A%20Telegram%20NFT%20sovg%E2%80%98alar%20va%20usernamelar%0A%0A%F0%9F%92%B0%20Narxi%20va%20%F0%9F%92%B3%20karta%20orqali%20to%E2%80%98lov%20tafsilotlarini%20yuboring%2C%20rahmat%21" target="_blank" rel="noopener" style="--c:var(--gold)"><i><svg viewBox="0 0 24 24"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></i><h3>NFT</h3><p>Telegram NFT sovg‘alar va usernamelar</p><span class="go">Buyurtma berish <b>→</b></span></a>
+      <a href="https://t.me/sabr_t1k?text=Assalomu%20alaykum%21%20%F0%9F%91%8B%0A%0A%F0%9F%93%B1%20Xizmat%3A%20Telegram%20uchun%20virtual%20raqam%0A%0A%F0%9F%92%B0%20Narxi%20va%20%F0%9F%92%B3%20karta%20orqali%20to%E2%80%98lov%20tafsilotlarini%20yuboring%2C%20rahmat%21" target="_blank" rel="noopener" style="--c:var(--green)"><i><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg></i><h3>Nomer</h3><p>Telegram uchun virtual raqamlar</p><span class="go">Buyurtma berish <b>→</b></span></a>
+    </div>
+  </section>
+
+  <section id="aloqa">
+    <h2>Buyurtma 3 qadamda</h2>
+    <p class="sub">Hammasi Telegramning o‘zida, tez va oson.</p>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Xizmatni tanlang</h3><p>Premium, Stars yoki boshqa xizmat tugmasini bosing.</p></div>
+      <div class="step"><span class="n">2</span><h3>Tayyor xabar ochiladi</h3><p>Xizmat nomi va narxi yozilgan chiroyli xabar menejerga tayyor turadi.</p></div>
+      <div class="step"><span class="n">3</span><h3>Karta orqali to‘lang</h3><p>To‘lovdan keyin xizmat tez yetkaziladi.</p></div>
+    </div>
+    <div class="cta2">
+      <div class="me"><span class="av">ST</span><span><b>@sabr_t1k</b><small>Shaxsiy menejeringiz · 24/7 onlayn</small></span><i class="dot"></i></div>
+      <a class="btn go" href="https://t.me/sabr_t1k" target="_blank" rel="noopener">Telegramda ochish</a>
+    </div>
+  </section>
+</main>
+<footer>© 2026 Premium olib berish xizmati 24/7</footer>
+</div>
+
+<script>
+(function(){
+  // yulduzchalar foni
+  var sky=document.getElementById("sky"),i,s;
+  for(i=0;i<26;i++){
+    s=document.createElement("span");s.className="star";s.textContent="✦";
+    s.style.cssText="left:"+(Math.random()*100)+"%;top:"+(Math.random()*110)+"%;font-size:"+(8+Math.random()*16)+"px;--d:"+(2+Math.random()*4)+"s;--r:"+(25+Math.random()*30)+"s";
+    sky.appendChild(s);
+  }
+  // kalkulyator
+  var P=215,MIN=50,st=document.getElementById("st"),sm=document.getElementById("sm"),
+      tot=document.getElementById("tot"),warn=document.getElementById("warn"),buy=document.getElementById("buy");
+  function fmt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g," ")}
+  function num(v){return parseInt(String(v).replace(/\D/g,""),10)||0}
+  function render(n){
+    var sum=n*P;
+    tot.textContent=fmt(sum)+" so‘m";tot.classList.remove("pop");void tot.offsetWidth;tot.classList.add("pop");
+    warn.textContent=(n>0&&n<MIN)?"Minimal miqdor: 50 ta Stars":"";
+    var ok=n>=MIN;
+    buy.style.opacity=ok?1:.5;
+    buy.href=ok?"https://t.me/sabr_t1k?text="+encodeURIComponent("Assalomu alaykum! 👋\n\n⭐ Xizmat: Telegram Stars\n🔢 Miqdor: "+n+" ta\n💰 Summa: "+fmt(sum)+" so‘m\n\n💳 To‘lovni karta orqali qilaman. Karta raqamini yuboring, rahmat!"):"https://t.me/sabr_t1k";
+  }
+  st.addEventListener("input",function(){var n=num(st.value);st.value=n?fmt(n):"";sm.value=n?fmt(n*P):"";render(n)});
+  sm.addEventListener("input",function(){var v=num(sm.value),n=Math.floor(v/P);sm.value=v?fmt(v):"";st.value=n?fmt(n):"";render(n)});
+  var chips=document.getElementById("chips");
+  [50,100,250,500,1000,5000].forEach(function(n){
+    var b=document.createElement("button");b.type="button";b.textContent=fmt(n);
+    b.onclick=function(){st.value=fmt(n);sm.value=fmt(n*P);render(n)};chips.appendChild(b);
+  });
+  st.value="50";sm.value=fmt(50*P);render(50);
+  // qo‘shimcha animatsiyalar
+  var intro=document.getElementById("intro"),burst=document.getElementById("burst"),cols=["#FFC83D","#2AABEE","#FF4FA3","#8B5CF6","#ffffff"];
+  for(i=0;i<170;i++){var p=document.createElement("i"),a=Math.random()*6.283,d=120+Math.random()*Math.max(innerWidth,innerHeight)*.55;
+    p.style.cssText="--x:"+Math.cos(a)*d+"px;--y:"+Math.sin(a)*d+"px;--w:"+(4+Math.random()*10)+"px;--c:"+cols[i%5]+";--dl:"+(.85+Math.random()*.5)+"s";burst.appendChild(p)}
+  function endIntro(){document.documentElement.classList.add("skip");intro.style.display="none"}
+  intro.addEventListener("click",endIntro);
+  setTimeout(function(){intro.style.display="none"},3600);
+  document.documentElement.classList.add("js");
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll("section").forEach(function(el){el.classList.add("rv");io.observe(el)});
+  for(i=0;i<5;i++){s=document.createElement("span");s.className="shoot";s.style.cssText="left:"+(55+Math.random()*45)+"%;top:"+(Math.random()*35)+"%;animation-delay:"+(i*1.4+Math.random()*2)+"s";sky.appendChild(s)}
+  var glow=document.getElementById("glow");
+  window.addEventListener("pointermove",function(e){glow.style.left=e.clientX+"px";glow.style.top=e.clientY+"px"});
+  document.querySelectorAll(".glass").forEach(function(c){
+    c.addEventListener("pointermove",function(e){var r=c.getBoundingClientRect();c.style.setProperty("--ry",((e.clientX-r.left)/r.width-.5)*8+"deg");c.style.setProperty("--rx",(.5-(e.clientY-r.top)/r.height)*8+"deg")});
+    c.addEventListener("pointerleave",function(){c.style.setProperty("--rx","0deg");c.style.setProperty("--ry","0deg")});
+  });
+})();
+</script>
+</body>
+</html>
